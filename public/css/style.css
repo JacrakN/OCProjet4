@@ -1,0 +1,46 @@
+body {
+    margin: 50px;
+}
+h1, h2, h3 {
+    text-align:center;
+}
+h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+    font-style: italic;
+}
+h2 {
+    font-size: 0.7em;
+    font-weight: lighter;
+    color: rgb(138, 124, 124);
+}
+.author_name {
+    font-size: 1.25em;
+}
+h3 {
+    background-color:black;
+    color:white;
+    font-size:0.9em;
+    margin-bottom:0px;
+}
+.news p {
+    background-color:#CCCCCC;
+    margin-top:0px;
+}
+.news {
+    width:70%;
+    margin:auto;
+}
+
+.coms-options {
+    text-decoration: none;
+    color: rgb(88, 84, 81);
+    font-size: 0.8em;
+}
+.coms-options:hover {
+    background-color: rgb(221, 216, 212);
+}
+.coms-date {
+    font-size: 0.85em;
+    color: rgb(88, 84, 81);
+}
