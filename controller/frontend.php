@@ -26,7 +26,6 @@ function post()
 function addComment($postId, $author, $comment)
 {
     $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
-
     $affectedLines = $commentManager->postComment($postId, $author, $comment);
 
     if ($affectedLines === false) {
@@ -54,6 +53,7 @@ function editComment($id, $comment, $postId) {
         header('Location: index.php?action=post&id=' . $postId);
     }
 }
+
 function reportComment($id, $postId) {
     $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
     $reportedComment = $commentManager->reportComment($id);
@@ -65,6 +65,7 @@ function reportComment($id, $postId) {
         header('Location: index.php?action=post&id=' . $postId);
     }
 }
+
 function deleteComment($id, $postId) {
     $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
     $deletedComment = $commentManager->deleteComment($id);
@@ -73,5 +74,22 @@ function deleteComment($id, $postId) {
         throw new Exception('Impossible de supprimer ce commentaire !');
     } else {
         header('Location: index.php?action=post&id=' . $postId);
+    }
+}
+
+function addPost() {
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+
+    require('view/frontend/newPostView.php');
+}
+
+function addChapter($title, $content) {
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $chapterContent = $postManager->chapterUpload($title, $content);
+
+    if ($chapterContent === false) {
+        throw new Exception('Impossible à mettre en ligne !');
+    } else {
+        header('Location: index.php');
     }
 }

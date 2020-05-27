@@ -5,7 +5,7 @@
 <h2>────── écrit par <span class="author_name">Jean Forteroche</span> ──────</h2>
 <p>Derniers chapitres :</p>
 
-<p><a href="index.php?action=newPost">Ajouter un nouveau chapitre</a></p>
+<p><a href="index.php?action=addPost">Ajouter un nouveau chapitre</a></p>
 
 <?php
 while ($data = $posts->fetch())

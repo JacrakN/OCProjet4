@@ -5,16 +5,16 @@
 
 <a href="index.php"><- Retour</a>
 
-<h2>Modifier un commentaire</h2>
+<h2>Ecrire un nouveau chapitre</h2>
 
-<form action="index.php?action=editComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $comment['post_id'] ?>" method="post"> 
+<form action="index.php?action=addChapter" method="post"> 
     <div>
         <label for="title">Titre</label><br />
-        <input type="text" id="author" name="author" value="<?= $comment['author'] ?>" />
+        <input type="text" id="title" name="title" />
     </div>
     <div>
-        <label for="comment"></label><br />
-        <textarea id="comment" name="comment"><?= $comment['comment'] ?></textarea>
+        <label for="content"></label><br />
+        <textarea id="content" name="content"></textarea>
     </div>
     <div>
         <input type="submit"/>

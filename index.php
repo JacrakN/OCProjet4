@@ -58,11 +58,14 @@ try {
                 throw new Exception('Rien à supprimer');
             }
         }
-        elseif ($_GET['action'] == 'newPost') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                newPost();
+        elseif ($_GET['action'] == 'addPost') {
+            addPost();
+        }
+        elseif ($_GET['action'] == 'addChapter') {
+            if (!empty($_POST['title']) && !empty($_POST['content'])) {
+                addChapter($_POST['title'], $_POST['content']);
             } else {
-                throw new Exception("Impossible d'ajouter");
+                throw new Exception('Tous les champs ne sont pas remplis !');
             }
         }
     } else {
