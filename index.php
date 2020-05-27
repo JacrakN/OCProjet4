@@ -39,9 +39,9 @@ try {
                     throw new Exception('Tout les champs ne sont pas remplis !');
                 }
             } else {
-                echo $_GET['id'];
-                var_dump($_GET);
-                // throw new Exception('Toutes les données ne sont pas envoyés');
+                // echo $_GET['id'];
+                // var_dump($_GET);
+                throw new Exception('Toutes les données ne sont pas envoyés');
             }
         }
         elseif ($_GET['action'] == 'reportComment') {
@@ -58,14 +58,32 @@ try {
                 throw new Exception('Rien à supprimer');
             }
         }
-        elseif ($_GET['action'] == 'addPost') {
-            addPost();
+        elseif ($_GET['action'] == 'newPost') {
+            newPost();
         }
-        elseif ($_GET['action'] == 'addChapter') {
+        elseif ($_GET['action'] == 'addPost') {
             if (!empty($_POST['title']) && !empty($_POST['content'])) {
-                addChapter($_POST['title'], $_POST['content']);
+                addPost($_POST['title'], $_POST['content']);
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis !');
+            }
+        }
+        elseif ($_GET['action'] == 'printPost') {
+            if (isset($_GET['postid']) && $_GET['postid'] > 0) {
+                printPost($_GET['postid']);
+            } else {
+                throw new Exception('Aucun chapitre trouvé !');
+            }
+        }
+        elseif ($_GET['action'] == 'editPost') {
+            if (isset($_GET['postid']) && $_GET['postid'] > 0) {
+                if (!empty($_POST['title']) && !empty($_POST['content'])) {
+                    editPost($_GET['postid'], $_POST['title'], $_POST['content']);
+                } else {
+                    throw new Exception('Tout les champs ne sont pas remplis !');
+                }
+            } else {
+                throw new Exception('Toutes les données ne sont pas envoyés');
             }
         }
     } else {

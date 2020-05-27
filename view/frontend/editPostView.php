@@ -5,16 +5,16 @@
 
 <a href="index.php"><- Retour</a>
 
-<h2>Ecrire un nouveau chapitre</h2>
+<h2>Modification(s) du chapitre</h2>
 
-<form action="index.php?action=addPost" method="post"> 
+<form action="index.php?action=editPost&amp;postid=<?= $post['id'] ?>" method="post"> 
     <div>
         <label for="title">Titre</label><br />
-        <input type="text" id="title" name="title" />
+        <input type="text" id="title" name="title" value="<?= $post['title'] ?>" />
     </div>
     <div>
         <label for="content"></label><br />
-        <textarea id="content" name="content"></textarea>
+        <textarea id="content" name="content"><?= $post['content'] ?></textarea>
     </div>
     <div>
         <input type="submit"/>

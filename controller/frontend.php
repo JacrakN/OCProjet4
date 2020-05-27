@@ -77,18 +77,33 @@ function deleteComment($id, $postId) {
     }
 }
 
-function addPost() {
+function newPost() {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
 
     require('view/frontend/newPostView.php');
 }
 
-function addChapter($title, $content) {
+function addPost($title, $content) {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
-    $chapterContent = $postManager->chapterUpload($title, $content);
+    $postContent = $postManager->postUpload($title, $content);
 
-    if ($chapterContent === false) {
-        throw new Exception('Impossible à mettre en ligne !');
+    header('Location: index.php');
+}
+
+function printPost($postId) {
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $post = $postManager->getPost($postId);
+
+    require('view/frontend/editPostView.php');
+}
+
+function editPost($postId, $title, $content) {
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $modifiedPost = $postManager->updatePost($postId, $title, $content);
+
+    if ($modifiedPost === false) {
+        // throw new Exception('Impossible de modidier ce post');
+        echo $postId;
     } else {
         header('Location: index.php');
     }

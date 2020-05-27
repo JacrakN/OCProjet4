@@ -21,11 +21,19 @@ class PostManager extends Manager {
         return $post;
     }
 
-    public function chapterUpload($title, $content) {
+    public function postUpload($title, $content) {
         $db = $this->dbConnect();
         $posts = $db->prepare('INSERT INTO posts(title, content, creation_date) VALUES(?, ?, NOW())');
-        $chapterContent = $posts->execute(array($title, $content));
+        $postContent = $posts->execute(array($title, $content));
 
-        return $chapterContent;
+        return $postContent;
+    }
+
+    public function updatePost($postId, $title, $content) {
+        $db = $this->dbConnect();
+        $posts = $db->prepare('UPDATE posts SET title = ?, content = ? WHERE id = ?');
+        $modifiedPost = $posts->execute(array($title, $content, $postId));
+
+        return $modifiedPost;
     }
 }
