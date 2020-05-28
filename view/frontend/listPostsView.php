@@ -15,7 +15,8 @@ while ($data = $posts->fetch())
         <h3>
             <?= htmlspecialchars($data['title']) ?>
             <em>le <?= $data['creation_date_fr'] ?></em>
-            <a href="index.php?action=printPost&amp;postid=<?= $data['id'] ?>">Modifier</a>
+            <p><a href="index.php?action=printPost&amp;postid=<?= $data['id'] ?>">Modifier</a>
+            <a href="index.php?action=deletePost&amp;postid=<?= $data['id'] ?>">Supprimer</a></p>
         </h3>
         
         <p>

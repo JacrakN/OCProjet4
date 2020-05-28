@@ -108,3 +108,14 @@ function editPost($postId, $title, $content) {
         header('Location: index.php');
     }
 }
+
+function deletePost($postId) {
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $deletedPost = $postManager->deletePost($postId);
+
+    if ($deletedPost === false) {
+        throw new Exception('Impossible de supprimer ce post');
+    } else {
+        header('Location: index.php');
+    }
+}

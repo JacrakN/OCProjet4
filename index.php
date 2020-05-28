@@ -86,6 +86,9 @@ try {
                 throw new Exception('Toutes les données ne sont pas envoyés');
             }
         }
+        elseif ($_GET['action'] == 'deletePost') {
+            deletePost($_GET['postid']);
+        }
     } else {
         listPosts();
     }
