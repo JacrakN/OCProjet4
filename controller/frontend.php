@@ -80,7 +80,7 @@ function deleteComment($id, $postId) {
 function newPost() {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
 
-    require('view/frontend/newPostView.php');
+    require('view/frontend/newPostView.html');
 }
 
 function addPost($title, $content) {

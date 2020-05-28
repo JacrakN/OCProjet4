@@ -15,22 +15,21 @@
 
   <body>
     <a href="index.php"><- Retour</a>
-
     <h1>Nouveau Chapitre</h1>
-        <form action="index.php?action=editPost&amp;postid=<?= $post['id'] ?>" method="post">
+      <form action="index.php?action=addPost" method="post">
         <div>
-            <label for="title">Titre</label><br />
-            <input type="text" id="title" name="title" value="<?= $post['title'] ?>" />
+          <label for="title">Titre</label><br />
+          <input type="text" id="title" name="title" />
         </div>
 
         <div>
-            <label for="content"></label><br />
-            <textarea id="mytextarea" name="content"><?= $post['content'] ?></textarea>
+          <label for="content"></label><br />
+          <textarea id="mytextarea" name="content"></textarea>
         </div>
         
         <div>
-            <input type="submit"/>
+          <input type="submit"/>
         </div>
-        </form>
+      </form>
   </body>
 </html>
