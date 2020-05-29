@@ -18,29 +18,50 @@ h2 {
     font-size: 1.25em;
 }
 h3 {
-    background-color:black;
-    color:white;
+    color: black;
     font-size:0.9em;
     margin-bottom:0px;
 }
 .news p {
-    background-color:#CCCCCC;
     margin-top:0px;
 }
 .news {
-    width:70%;
+    width:66%;
     margin:auto;
 }
-
-.coms-options {
+.coms_options {
     text-decoration: none;
     color: rgb(88, 84, 81);
     font-size: 0.8em;
 }
-.coms-options:hover {
+.coms_options:hover {
     background-color: rgb(221, 216, 212);
 }
-.coms-date {
+.coms_date, .creation_date_post{
     font-size: 0.85em;
     color: rgb(88, 84, 81);
+    font-weight: lighter;
+}
+.admin_connection {
+    font-size: 0.8em;
+    text-align: right;
+}
+.admin_newchapter {
+    font-size: 0.8em;
+    text-align: left;
+}
+.option_connection, .option_newchapter, .admin_edit, .list_coms{
+    text-decoration: none;
+    color: rgb(88, 84, 81);
+}
+.admin_delete {
+    color: rgb(235, 79, 79);
+    text-decoration: none;
+}
+.last_chapter {
+    text-align: center ;
+    font-size: 0.95em;
+}
+.admin_edit, .admin_delete {
+    font-size: 0.85em;
 }

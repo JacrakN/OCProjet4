@@ -89,6 +89,9 @@ try {
         elseif ($_GET['action'] == 'deletePost') {
             deletePost($_GET['postid']);
         }
+        elseif ($_GET['action'] == 'connectAdmin') {
+            connectAdmin();
+        }
     } else {
         listPosts();
     }

@@ -11,7 +11,7 @@
     </h3>
     
     <p>
-        <?= nl2br(htmlspecialchars($post['content'])) ?>
+        <?= $post['content'] ?>
     </p>
 </div>
 
@@ -35,13 +35,13 @@
 while ($comment = $comments->fetch())
 {
 ?>
-    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> <span class="coms-date">le <?= $comment['comment_date_fr'] ?></span></p>
+    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> <span class="coms_date">le <?= $comment['comment_date_fr'] ?></span></p>
 
     <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
     <p>
-        <a href="index.php?action=reportComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="coms-options">⚐ Signaler</a>
-          <a href="index.php?action=printComment&amp;id=<?= $comment['id'] ?>" class="coms-options">✎ Modifier</a> 
-          <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="coms-options">(-) Supprimer</a>
+        <a href="index.php?action=reportComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="coms_options">⚐ Signaler</a>
+          <a href="index.php?action=printComment&amp;id=<?= $comment['id'] ?>" class="coms_options">✎ Modifier</a> 
+          <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="coms_options">(-) Supprimer</a>
     </p>
     <br>
 <?php

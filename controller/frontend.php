@@ -78,8 +78,6 @@ function deleteComment($id, $postId) {
 }
 
 function newPost() {
-    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
-
     require('view/frontend/newPostView.html');
 }
 
@@ -118,4 +116,8 @@ function deletePost($postId) {
     } else {
         header('Location: index.php');
     }
+}
+
+function connectAdmin() {
+    require('view/frontend/admin.php');
 }
