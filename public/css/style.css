@@ -46,22 +46,70 @@ h3 {
     font-size: 0.8em;
     text-align: right;
 }
-.admin_newchapter {
-    font-size: 0.8em;
-    text-align: left;
+.admin_options {
+    font-size: 1.1em;
+    text-align: center;
+    margin-top: 150px;
 }
-.option_connection, .option_newchapter, .admin_edit, .list_coms{
+.option_connection, .option_newchapter, .admin_edit_chapter, .list_coms{
     text-decoration: none;
     color: rgb(88, 84, 81);
+}
+.admin_newchapter, .admin_edit, .admin_coms_mod{
+    padding: 15px;
+    width: 495px;
+    margin: auto;
+}
+.admin_newchapter {
+    border: dashed rgb(88, 84, 81);
+}
+.admin_edit {
+    margin-top: 45px;
+    margin-bottom: 15px;
+}
+.admin_newchapter:hover, .chapter_list_admin:hover, .admin_coms_mod:hover {
+    background-color: rgb(221, 216, 212);
+    transition: 0.5s;
 }
 .admin_delete {
     color: rgb(235, 79, 79);
     text-decoration: none;
+    font-size: 1.5em;
+    padding-left: 15px;
 }
 .last_chapter {
     text-align: center ;
     font-size: 0.95em;
 }
-.admin_edit, .admin_delete {
+.admin_edit_chapter {
+    font-size: 1.25em;
+    font-weight: bold;
+    padding-left: 15px;
+}
+.title_post {
+    font-size: 1.1em;
+    width: 150px;
+    font-weight: bold;
+}
+.chapter_list_admin {
+    display: flex;
     font-size: 0.85em;
+    align-items: center;
+    width: 525px;
+    margin: auto;
+    border-left: solid 2px rgb(88, 84, 81);
+    border-right: solid 2px rgb(88, 84, 81);
+    border-bottom: solid 2px rgb(88, 84, 81);
+}
+.creation_date_post {
+    width: 135px;
+    padding: 15px;
+    font-style: italic;
+}
+.admin_coms_mod {
+    width: 495px;
+    margin-top: 45px;
+    border-top: solid 2px rgb(88, 84, 81);
+    border-left: solid 2px rgb(88, 84, 81);
+    border-right: solid 2px rgb(88, 84, 81);
 }

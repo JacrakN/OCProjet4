@@ -92,6 +92,13 @@ try {
         elseif ($_GET['action'] == 'connectAdmin') {
             connectAdmin();
         }
+        elseif ($_GET['action'] == 'allAccess') {
+            if (isset($_POST['username']) && $_POST['username'] == "Fortécrivain" && isset($_POST['password']) && $_POST['password'] == "JFaisdeslivres") {
+                allAccess($_POST['username'], $_POST['password']);
+            } else {
+                throw new Exception('Nom d\'utilisateur ou mot de passe incorrect');
+            }
+        }
     } else {
         listPosts();
     }

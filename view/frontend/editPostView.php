@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <a href="index.php"><- Retour</a>
+    <a class="edit_uturn" href="admin.php">Retour</a>
 
     <h1>Nouveau Chapitre</h1>
         <form action="index.php?action=editPost&amp;postid=<?= $post['id'] ?>" method="post">

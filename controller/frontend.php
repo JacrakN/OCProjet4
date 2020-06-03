@@ -98,12 +98,13 @@ function printPost($postId) {
 function editPost($postId, $title, $content) {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
     $modifiedPost = $postManager->updatePost($postId, $title, $content);
+    $posts = $postManager->getPosts();
 
     if ($modifiedPost === false) {
         // throw new Exception('Impossible de modidier ce post');
         echo $postId;
     } else {
-        header('Location: index.php');
+        require('view/frontend/admin.php');
     }
 }
 
@@ -119,5 +120,12 @@ function deletePost($postId) {
 }
 
 function connectAdmin() {
+    require('view/frontend/adminLogin.php');
+}
+
+function allAccess($username, $passWord) {
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $posts = $postManager->getPosts();
+    
     require('view/frontend/admin.php');
 }
