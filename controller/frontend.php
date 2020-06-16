@@ -3,6 +3,7 @@
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
+require_once('model/UserManager.php');
 
 function listPosts()
 {
@@ -90,7 +91,9 @@ function addPost($title, $content) {
 
 function printPost($postId) {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
     $post = $postManager->getPost($postId);
+    $comments = $commentManager->getComments($postId);
 
     require('view/frontend/editPostView.php');
 }
@@ -119,13 +122,28 @@ function deletePost($postId) {
     }
 }
 
-function connectAdmin() {
+function loginAdmin() {
     require('view/frontend/adminLogin.php');
 }
 
-function allAccess($username, $passWord) {
-    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
-    $posts = $postManager->getPosts();
-    
-    require('view/frontend/admin.php');
+function logoutAdmin() {
+    header('Location: index.php');
+    session_destroy();
+}
+
+function register() {
+    require('view/frontend/register.php');
+}
+
+function registerUser($pseudo, $password) {
+    $userManager = new \OpenClassrooms\Blog\Model\UserManager();
+    $passHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $dataUser = $userManager->register($pseudo, $passHash);
+
+    if ($dataUser === false) {
+        throw new Exception('Inscription impossible');
+    } else {
+        header('Location: index.php');
+        echo 'Vous êtes maintenant inscrits !';
+    }
 }

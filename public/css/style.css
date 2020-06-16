@@ -37,12 +37,12 @@ h3 {
 .coms_options:hover {
     background-color: rgb(221, 216, 212);
 }
-.coms_date, .creation_date_post{
+.coms_date, .admin_creation_date_post {
     font-size: 0.85em;
     color: rgb(88, 84, 81);
     font-weight: lighter;
 }
-.admin_connection {
+.admin_login, .admin_logout {
     font-size: 0.8em;
     text-align: right;
 }
@@ -51,7 +51,7 @@ h3 {
     text-align: center;
     margin-top: 150px;
 }
-.option_connection, .option_newchapter, .admin_edit_chapter, .list_coms{
+.option_login, .option_newchapter, .option_logout, .admin_edit_chapter {
     text-decoration: none;
     color: rgb(88, 84, 81);
 }
@@ -69,7 +69,7 @@ h3 {
 }
 .admin_newchapter:hover, .chapter_list_admin:hover, .admin_coms_mod:hover {
     background-color: rgb(221, 216, 212);
-    transition: 0.5s;
+    transition: 0.2s;
 }
 .admin_delete {
     color: rgb(235, 79, 79);
@@ -78,7 +78,7 @@ h3 {
     padding-left: 15px;
 }
 .last_chapter {
-    text-align: center ;
+    text-align: center;
     font-size: 0.95em;
 }
 .admin_edit_chapter {
@@ -86,25 +86,35 @@ h3 {
     font-weight: bold;
     padding-left: 15px;
 }
-.title_post {
+.admin_title_post {
     font-size: 1.1em;
     width: 150px;
     font-weight: bold;
+    text-align: center;
+}
+.title_post {
+    font-size: 1.5em;
 }
 .chapter_list_admin {
     display: flex;
     font-size: 0.85em;
     align-items: center;
-    width: 525px;
+    width: 575px;
     margin: auto;
     border-left: solid 2px rgb(88, 84, 81);
     border-right: solid 2px rgb(88, 84, 81);
     border-bottom: solid 2px rgb(88, 84, 81);
 }
-.creation_date_post {
+.admin_creation_date_post {
     width: 135px;
     padding: 15px;
     font-style: italic;
+}
+.creation_date_post {
+    font-style: italic;
+    font-size: 0.85em;
+    color: rgb(88, 84, 81);
+    font-weight: lighter;
 }
 .admin_coms_mod {
     width: 495px;
@@ -112,4 +122,9 @@ h3 {
     border-top: solid 2px rgb(88, 84, 81);
     border-left: solid 2px rgb(88, 84, 81);
     border-right: solid 2px rgb(88, 84, 81);
+}
+.edit_uturn {
+    text-decoration: none;
+    font-size: 0.9em;
+    color: rgb(88, 84, 81);
 }

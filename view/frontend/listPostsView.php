@@ -4,8 +4,9 @@
 <h1>"Billet simple pour l'Alaska" </h1>
 <h2>────── écrit par <span class="author_name">Jean Forteroche</span> ──────</h2>
 
-<p class="admin_connection">
-    <a href="index.php?action=connectAdmin" class="option_connection">Connexion</a>
+<p class="admin_login">
+    <a href="index.php?action=login" class="option_login">Connexion</a>
+    <a href="index.php?action=register">Inscription</a>
 </p>
 
 <p class="last_chapter">Derniers chapitres :</p>
@@ -17,7 +18,7 @@ while ($data = $posts->fetch())
     <div class="news">
         <h3>
             <p class="title_post"><?= htmlspecialchars($data['title']) ?></p>
-            <p class="creation_date_post"><em>le <?= $data['creation_date_fr'] ?></em></p>
+            <p class="creation_date_post">le <?= $data['creation_date_fr'] ?></p>
         </h3>
         
         <p>

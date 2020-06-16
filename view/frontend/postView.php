@@ -40,8 +40,6 @@ while ($comment = $comments->fetch())
     <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
     <p>
         <a href="index.php?action=reportComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="coms_options">⚐ Signaler</a>
-          <a href="index.php?action=printComment&amp;id=<?= $comment['id'] ?>" class="coms_options">✎ Modifier</a> 
-          <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="coms_options">(-) Supprimer</a>
     </p>
     <br>
 <?php
