@@ -5,7 +5,6 @@
 <h2>────── écrit par <span class="author_name">Jean Forteroche</span> ──────</h2>
 
 <p class="admin_login">
-    <a href="index.php?action=login" class="option_login">Connexion</a>
     <a href="index.php?action=register">Inscription</a>
 </p>
 

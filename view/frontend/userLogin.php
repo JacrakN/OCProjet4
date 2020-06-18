@@ -1,13 +1,13 @@
-<?php $title = "Connexion (admin)" ?>
+<?php $title = "Connexion" ?>
 
 <?php ob_start(); ?>
 
-<h2>Accès aux droits administrateur</h2>
+<h2>Connexion</h2>
 
-<form action="index.php?action=allAccess" method="post">
+<form action="index.php?action=loginUser" method="post">
         <div>
-            <label for="username">Nom d'utilisateur</label><br />
-            <input type="username" id="username" name="username">
+            <label for="pseudo">Nom d'utilisateur</label><br />
+            <input type="pseudo" id="pseudo" name="pseudo">
         </div>
         <br>
         <div>

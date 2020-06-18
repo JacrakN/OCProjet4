@@ -122,13 +122,15 @@ function deletePost($postId) {
     }
 }
 
-function loginAdmin() {
-    require('view/frontend/adminLogin.php');
+function login() {
+    require('view/frontend/userLogin.php');
 }
 
-function logoutAdmin() {
-    header('Location: index.php');
-    session_destroy();
+function adminArea() {
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $posts = $postManager->getPosts();
+
+    require('view/frontend/admin.php');
 }
 
 function register() {
@@ -145,5 +147,26 @@ function registerUser($pseudo, $password) {
     } else {
         header('Location: index.php');
         echo 'Vous êtes maintenant inscrits !';
+    }
+}
+
+function loginUser($pseudo, $password) {
+    $userManager = new \OpenClassrooms\Blog\Model\UserManager();
+    $check = $userManager->getPass($pseudo);
+    $samePass = password_verify($_POST['password'], $check['password']);
+
+    if (!$check) {
+        echo 'Mauvais mot de passe ou identifiant !';
+    } else {
+        if ($samePass) {
+            session_start();
+            $_SESSION['id'] = $check['id'];
+            $_SESSION['role'] = $check['name'];
+            $_SESSION['pseudo'] = $pseudo;
+            
+            header('Location: index.php');
+        } else {
+            echo 'Mauvais mot de passe ou identifiant !';
+        }
     }
 }

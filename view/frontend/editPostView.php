@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <a class="edit_uturn" href="view/frontend/admin.php"><- Retour</a>
+    <a class="edit_uturn" href="index.php?action=adminArea"><- Retour à l'espace admninitrateur</a>
 
     <h1>Modifier le chapitre</h1>
         <form action="index.php?action=editPost&amp;postid=<?= $post['id'] ?>" method="post">

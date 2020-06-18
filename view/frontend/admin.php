@@ -1,22 +1,10 @@
-<?php 
-
-session_start();
-
-$_SESSION['username'] = 'Fortécrivain';
-
-?>
-
 <?php $title = 'Espace admin'; ?>
 
 <?php ob_start(); ?>
 
+<p><a href="index.php">Retour à la liste des chapitres</a></p>
+
 <h1>Espace administrateur</h1>
-
-<h2>Bonjour <?php echo $_SESSION['username'] ?>, que voulez-vous faire ?</h2>
-
-<p class="admin_logout">
-    <a href="index.php?action=logoutAdmin" class="option_logout">Déconnexion</a>
-</p>
 
 <div class="admin_options">
     <p class="admin_newchapter">

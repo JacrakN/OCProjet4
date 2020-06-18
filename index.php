@@ -89,11 +89,14 @@ try {
         elseif ($_GET['action'] == 'deletePost') {
             deletePost($_GET['postid']);
         }
-        elseif ($_GET['action'] == 'loginAdmin') {
-            loginAdmin();
+        elseif ($_GET['action'] == 'login') {
+            login();
         }
-        elseif ($_GET['action'] == 'logoutAdmin') {
-            logoutAdmin();
+        elseif ($_GET['action'] == 'adminArea') {
+            adminArea();
+        }
+        elseif ($_GET['action'] == 'logout') {
+            logout();
         }
         elseif ($_GET['action'] == 'register') {
             register();
@@ -105,6 +108,13 @@ try {
                 } else {
                     throw new Exception('Les mots de passe sont différents !');
                 }
+            } else {
+                throw new Exception('Tout les champs ne sont pas remplis !');
+            }
+        }
+        elseif ($_GET['action'] == 'loginUser') {
+            if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
+                loginUser($_POST['pseudo'], $_POST['password']);
             } else {
                 throw new Exception('Tout les champs ne sont pas remplis !');
             }
