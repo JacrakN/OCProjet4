@@ -126,11 +126,17 @@ function login() {
     require('view/frontend/userLogin.php');
 }
 
+function logout() {
+    header('Location: index.php');
+}
+
 function adminArea() {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
     $posts = $postManager->getPosts();
 
-    require('view/frontend/admin.php');
+    if (checkAdmin()) {
+        require('view/frontend/admin.php');
+    }
 }
 
 function register() {
@@ -140,14 +146,15 @@ function register() {
 function registerUser($pseudo, $password) {
     $userManager = new \OpenClassrooms\Blog\Model\UserManager();
     $passHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $dataUser = $userManager->register($pseudo, $passHash);
+    $notUnique = $userManager->checkPseudo($pseudo);
 
-    if ($dataUser === false) {
-        throw new Exception('Inscription impossible');
-    } else {
-        header('Location: index.php');
-        echo 'Vous êtes maintenant inscrits !';
-    }
+        if ($notUnique) {
+            throw new Exception('Pseudo déjà prit !');
+        } else {
+            header('Location: index.php');
+            // echo 'Vous êtes maintenant inscrits !';
+            $userManager->register($pseudo, $passHash);
+        }
 }
 
 function loginUser($pseudo, $password) {
@@ -159,7 +166,6 @@ function loginUser($pseudo, $password) {
         echo 'Mauvais mot de passe ou identifiant !';
     } else {
         if ($samePass) {
-            session_start();
             $_SESSION['id'] = $check['id'];
             $_SESSION['role'] = $check['name'];
             $_SESSION['pseudo'] = $pseudo;
@@ -168,5 +174,14 @@ function loginUser($pseudo, $password) {
         } else {
             echo 'Mauvais mot de passe ou identifiant !';
         }
+    }
+}
+
+function checkAdmin() {
+    if (!$_SESSION['role'] == 'admin') {
+        echo 'Vous n\'êtes pas autorisés à accéder à cette page !';
+        require('view/frontend/userLogin.php');
+    } else {
+        return true;
     }
 }

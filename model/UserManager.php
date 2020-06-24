@@ -19,4 +19,13 @@ class UserManager extends Manager {
 
         return $result;
     }
+
+    public function checkPseudo($pseudo) {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT pseudo FROM user WHERE pseudo = ?');
+        $req->execute(array($pseudo));
+        $data = $req->fetch();
+
+        return $data;
+    }
 }

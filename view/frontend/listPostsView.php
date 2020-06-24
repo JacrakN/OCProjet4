@@ -4,10 +4,6 @@
 <h1>"Billet simple pour l'Alaska" </h1>
 <h2>────── écrit par <span class="author_name">Jean Forteroche</span> ──────</h2>
 
-<p class="admin_login">
-    <a href="index.php?action=register">Inscription</a>
-</p>
-
 <p class="last_chapter">Derniers chapitres :</p>
 
 <?php

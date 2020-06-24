@@ -1,6 +1,8 @@
 <?php
 require('controller/frontend.php');
 
+session_start();
+
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
@@ -96,6 +98,7 @@ try {
             adminArea();
         }
         elseif ($_GET['action'] == 'logout') {
+            session_destroy();
             logout();
         }
         elseif ($_GET['action'] == 'register') {
