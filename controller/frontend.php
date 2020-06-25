@@ -21,7 +21,11 @@ function post()
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
 
-    require('view/frontend/postView.php');
+    if ($post) {
+        require('view/frontend/postView.php');
+    } else {
+        throw new Exception('Cette page n\'existe pas');
+    }
 }
 
 function addComment($postId, $author, $comment)
@@ -132,7 +136,9 @@ function logout() {
 
 function adminArea() {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
     $posts = $postManager->getPosts();
+    $comments = $commentManager->getFlagComments();
 
     if (checkAdmin()) {
         require('view/frontend/admin.php');

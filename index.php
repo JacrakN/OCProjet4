@@ -122,6 +122,9 @@ try {
                 throw new Exception('Tout les champs ne sont pas remplis !');
             }
         }
+        else {
+            echo 'Oups ! Cette page n\'existe pas';
+        }
     } else {
         listPosts();
     }

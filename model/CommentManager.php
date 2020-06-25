@@ -36,12 +36,18 @@ class CommentManager extends Manager {
     }
     public function reportComment($id) {
         $db = $this->dbConnect();
-        $comments = $db->prepare('UPDATE comments SET report = 1 WHERE id = ?');
+        $comments = $db->prepare('UPDATE comments SET report = report +1 WHERE id = ?');
         $reportedComment = $comments->execute(array($id));
     }
     public function deleteComment($id) {
         $db = $this->dbConnect();
         $comments = $db->prepare('DELETE FROM comments WHERE id = ?');
         $deletedComment = $comments->execute(array($id));
+    }
+    public function getFlagComments() {
+        $db = $this->dbConnect();
+        $comments = $db->query('SELECT author, comment, comment_date FROM comments WHERE report > 0');
+        
+        return $comments;
     }
 }
