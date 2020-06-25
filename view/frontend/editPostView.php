@@ -40,11 +40,9 @@ while ($comment = $comments->fetch())
 ?>
     <p><strong><?= htmlspecialchars($comment['author']) ?></strong> <span class="coms_date">le <?= $comment['comment_date_fr'] ?></span></p>
 
-    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
     <p>
-        <a href="index.php?action=reportComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="coms_options">⚐ Signaler</a>
-          <a href="index.php?action=printComment&amp;id=<?= $comment['id'] ?>" class="coms_options">✎ Modifier</a> 
-          <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="coms_options" onclick="return(confirm('Supprimer ce commentaire ?'));">(-) Supprimer</a>
+      <?= nl2br(htmlspecialchars($comment['comment'])) ?>
+      <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="admin_delete" onclick="return(confirm('Supprimer ce commentaire ?'));">x</a>
     </p>
     <br>
 <?php

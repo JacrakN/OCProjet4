@@ -18,7 +18,9 @@
                     </div>';
             } else {
                 echo '<div>
-                        <a href="index.php?action=adminArea">Espace Administrateur</a>
+                        <p class="admin_area">
+                            <a href="index.php?action=adminArea" class="option_admin_area">Espace Administrateur</a>
+                        </p>
                         <p> - Bonjour ' . $_SESSION['pseudo'] . '... oh mais bien sûr ! C\'est vous l\'administrateur !</p>
                         <p class="admin_logout">
                             <a href="index.php?action=logout" class="option_logout">Déconnexion</a>

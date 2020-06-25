@@ -9,10 +9,6 @@
 
 <form action="index.php?action=editComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $comment['post_id'] ?>" method="post"> 
     <div>
-        <label for="author">Auteur</label><br />
-        <input type="text" id="author" name="author" value="<?= $comment['author'] ?>" />
-    </div>
-    <div>
         <label for="comment">Commentaire</label><br />
         <textarea id="comment" name="comment"><?= $comment['comment'] ?></textarea>
     </div>

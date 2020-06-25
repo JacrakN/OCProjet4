@@ -51,7 +51,7 @@ h3 {
     text-align: center;
     margin-top: 150px;
 }
-.option_login, .option_newchapter, .option_logout, .admin_edit_chapter {
+.option_login, .option_newchapter, .option_logout, .admin_edit_chapter, .option_admin_area {
     text-decoration: none;
     color: rgb(88, 84, 81);
 }
