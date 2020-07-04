@@ -37,7 +37,7 @@ class CommentManager extends Manager {
     public function reportComment($id) {
         $db = $this->dbConnect();
         $comments = $db->prepare('UPDATE comments SET report = report +1 WHERE id = ?');
-        $reportedComment = $comments->execute(array($id));
+        $comments->execute(array($id));
     }
     public function deleteComment($id) {
         $db = $this->dbConnect();
@@ -46,8 +46,21 @@ class CommentManager extends Manager {
     }
     public function getFlagComments() {
         $db = $this->dbConnect();
-        $comments = $db->query('SELECT author, comment, comment_date FROM comments WHERE report > 0');
+        $comments = $db->query('SELECT id, author, comment, comment_date, report FROM comments WHERE report > 0 ORDER BY report DESC');
         
         return $comments;
+    }
+    public function resetReportCount($id) {
+        $db = $this->dbConnect();
+        $resets = $db->prepare('UPDATE comments SET report = 0 WHERE id = ?');
+        $resetedComment = $resets->execute(array($id));
+    }
+    public function getCommentCount($postId) {
+        $db = $this->dbConnect();
+        $comments = $db->prepare('SELECT COUNT(*) AS comments_count FROM comments WHERE post_id = ?');
+        $comments->execute(array($postId));
+        $commentCount = $comments->fetchColumn();
+
+        return $commentCount;
     }
 }

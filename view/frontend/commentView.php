@@ -3,9 +3,9 @@
 <?php ob_start(); ?>
 <h1>"Billet simple pour l'Alaska"</h1>
 
-<a href="index.php?action=post&amp;id=<?= $comment['post_id'] ?>"><- Retour aux commentaires</a>
+<a href="index.php?action=post&amp;id=<?= $comment['post_id'] ?>">⬑   Retour aux commentaires</a>
 
-<h2>Modifier un commentaire</h2>
+<p>Modifier un commentaire</p>
 
 <form action="index.php?action=editComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $comment['post_id'] ?>" method="post"> 
     <div>

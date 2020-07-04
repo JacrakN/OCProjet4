@@ -41,51 +41,123 @@ try {
                     throw new Exception('Tout les champs ne sont pas remplis !');
                 }
             } else {
-                // echo $_GET['id'];
-                // var_dump($_GET);
                 throw new Exception('Toutes les données ne sont pas envoyés');
             }
         }
         elseif ($_GET['action'] == 'reportComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['postid']) && $_GET['postid'] > 0) {
-                reportComment($_GET['id'], $_GET['postid']);
+            if (isset($_SESSION['role'])) {
+                if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['postid']) && $_GET['postid'] > 0) {
+                    reportComment($_GET['id'], $_GET['postid']);
+                } else {
+                    throw new Exception('Rien à signaler');
+                }
             } else {
-                throw new Exception('Rien à signaler');
+                throw new Exception('Vous n\'êtes pas connecté !');
             }
         }
         elseif ($_GET['action'] == 'deleteComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['postid']) && $_GET['postid'] > 0) {
-                deleteComment($_GET['id'], $_GET['postid']); 
+            if (isset($_SESSION['role'])) {
+                if ($_SESSION['role'] == 'user' || $_SESSION['role'] == 'admin') {
+                    if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['postid']) && $_GET['postid'] > 0) {
+                        deleteComment($_GET['id'], $_GET['postid']); 
+                    } else {
+                        throw new Exception('Rien à supprimer');
+                    }
+                } else {
+                    throw new Exception('Vous n\'êtes pas autorisé à supprimer ce commentaire !');
+                }
             } else {
-                throw new Exception('Rien à supprimer');
+                throw new Exception('Vous n\'êtes pas connecté !');
+            }
+        }
+        elseif ($_GET['action'] == 'deleteCommentAdmin') {
+            if (isset($_SESSION['role'])) {
+                if ($_SESSION['role'] == 'admin') {
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        deleteCommentAdmin($_GET['id']); 
+                    } else {
+                        throw new Exception('Rien à supprimer');
+                    }
+                } else {
+                    throw new Exception('Vous n\'êtes pas administrateur !');
+                }
+            } else {
+                throw new Exception('Vous n\'êtes pas connecté !');
+            }
+        }
+        elseif ($_GET['action'] == 'resetReportCount') {
+            if (isset($_SESSION['role'])) {
+                if ($_SESSION['role'] == 'admin') {
+                    if (isset($_GET['id']) && $_GET['id'] > 0) {
+                        resetReportCount($_GET['id']);
+                    } else {
+                        throw new Exception('Aucun commentaire à reset');
+                    }
+                } else {
+                    throw new Exception('Vous n\'êtes pas administrateur !');
+                }
+            } else {
+                throw new Exception('Vous n\'êtes pas connecté !');
             }
         }
         elseif ($_GET['action'] == 'newPost') {
-            newPost();
+            if (isset($_SESSION['role'])) {
+                if ($_SESSION['role'] == 'admin') {
+                    newPost();
+                } else {
+                    throw new Exception('Vous n\'êtes pas administrateur !');
+                }
+            } else {
+                throw new Exception('Vous n\'êtes pas connecté !');
+            }
         }
         elseif ($_GET['action'] == 'addPost') {
-            if (!empty($_POST['title']) && !empty($_POST['content'])) {
-                addPost($_POST['title'], $_POST['content']);
+            if (isset($_SESSION['role'])) {
+                if ($_SESSION['role'] == 'admin') {
+                    if (!empty($_POST['title']) && !empty($_POST['content'])) {
+                        addPost($_POST['title'], $_POST['content']);
+                    } else {
+                        throw new Exception('Tous les champs ne sont pas remplis !');
+                    }
+                } else {
+                    throw new Exception('Vous n\'êtes pas administrateur !');
+                }
             } else {
-                throw new Exception('Tous les champs ne sont pas remplis !');
+                throw new Exception('Vous n\'êtes pas connecté !');
             }
         }
         elseif ($_GET['action'] == 'printPost') {
-            if (isset($_GET['postid']) && $_GET['postid'] > 0) {
-                printPost($_GET['postid']);
+            if (isset($_SESSION['role'])) {
+                if ($_SESSION['role'] == 'admin') {
+                    if (isset($_GET['postid']) && $_GET['postid'] > 0) {
+                        printPost($_GET['postid']);
+                    } else {
+                        throw new Exception('Aucun chapitre trouvé !');
+                    }
+                } else {
+                    throw new Exception('Vous n\'êtes pas administrateur !');
+                }
             } else {
-                throw new Exception('Aucun chapitre trouvé !');
+                throw new Exception('Vous n\'êtes pas connecté !');
             }
         }
         elseif ($_GET['action'] == 'editPost') {
-            if (isset($_GET['postid']) && $_GET['postid'] > 0) {
-                if (!empty($_POST['title']) && !empty($_POST['content'])) {
-                    editPost($_GET['postid'], $_POST['title'], $_POST['content']);
+            if (isset($_SESSION['role'])) {
+                if ($_SESSION['role'] == 'admin') {
+                    if (isset($_GET['postid']) && $_GET['postid'] > 0) {
+                        if (!empty($_POST['title']) && !empty($_POST['content'])) {
+                            editPost($_GET['postid'], $_POST['title'], $_POST['content']);
+                        } else {
+                            throw new Exception('Tout les champs ne sont pas remplis !');
+                        }
+                    } else {
+                        throw new Exception('Toutes les données ne sont pas envoyés');
+                    }
                 } else {
-                    throw new Exception('Tout les champs ne sont pas remplis !');
+                    throw new Exception('Vous n\'êtes pas administrateur !');
                 }
             } else {
-                throw new Exception('Toutes les données ne sont pas envoyés');
+                throw new Exception('Vous n\'êtes pas connecté !');
             }
         }
         elseif ($_GET['action'] == 'deletePost') {
@@ -95,7 +167,15 @@ try {
             login();
         }
         elseif ($_GET['action'] == 'adminArea') {
-            adminArea();
+            if (isset($_SESSION['role'])) {
+                if ($_SESSION['role'] == 'admin') {
+                    adminArea();
+                } else {
+                    throw new Exception('Vous n\'êtes pas administrateur !');
+                }
+            } else {
+                throw new Exception('Vous n\'êtes pas connecté !');
+            }
         }
         elseif ($_GET['action'] == 'logout') {
             session_destroy();

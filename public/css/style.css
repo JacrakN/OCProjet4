@@ -1,26 +1,24 @@
-body {
-    margin: 50px;
-}
-h1, h2, h3 {
-    text-align:center;
-}
 h1 {
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
     font-style: italic;
+    text-align: center;
 }
 h2 {
-    font-size: 0.7em;
+    font-size: 1.25em;
     font-weight: lighter;
     color: rgb(138, 124, 124);
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .author_name {
     font-size: 1.25em;
 }
 h3 {
     color: black;
-    font-size:0.9em;
+    font-size:1.1em;
     margin-bottom:0px;
+    text-align: center;
 }
 .news p {
     margin-top:0px;
@@ -29,10 +27,24 @@ h3 {
     width:66%;
     margin:auto;
 }
+.top_options {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 25px;
+}
+.back_option {
+    color: rgb(150, 82, 82);
+    font-size: 1.1em;
+    padding-left: 2.5%;
+}
+.main_part {
+    padding-left: 100px;
+    padding-right: 100px;
+}
 .coms_options {
     text-decoration: none;
     color: rgb(88, 84, 81);
-    font-size: 0.8em;
+    font-size: 0.95em;
 }
 .coms_options:hover {
     background-color: rgb(221, 216, 212);
@@ -43,22 +55,31 @@ h3 {
     font-weight: lighter;
 }
 .admin_login, .admin_logout {
-    font-size: 0.8em;
     text-align: right;
+    font-size: 1.1em;
+}
+.admin_area {
+    font-size: 1.5em;
 }
 .admin_options {
     font-size: 1.1em;
     text-align: center;
     margin-top: 150px;
 }
+.reset_report {
+    color: rgb(128, 128, 128);
+}
 .option_login, .option_newchapter, .option_logout, .admin_edit_chapter, .option_admin_area {
-    text-decoration: none;
     color: rgb(88, 84, 81);
 }
 .admin_newchapter, .admin_edit, .admin_coms_mod{
     padding: 15px;
     width: 495px;
     margin: auto;
+}
+.coms_flag_count {
+    color: rgb(218, 145, 86);
+    font-size: 0.75em;
 }
 .admin_newchapter {
     border: dashed rgb(88, 84, 81);
@@ -71,10 +92,13 @@ h3 {
     background-color: rgb(221, 216, 212);
     transition: 0.2s;
 }
+.admin_delete_chapter {
+    padding-left: 25px;
+}
 .admin_delete {
     color: rgb(235, 79, 79);
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 0.85em;
     padding-left: 15px;
 }
 .last_chapter {
@@ -99,7 +123,7 @@ h3 {
     display: flex;
     font-size: 0.85em;
     align-items: center;
-    width: 575px;
+    width: 550px;
     margin: auto;
     border-left: solid 2px rgb(88, 84, 81);
     border-right: solid 2px rgb(88, 84, 81);

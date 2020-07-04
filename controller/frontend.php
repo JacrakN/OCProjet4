@@ -20,6 +20,7 @@ function post()
 
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
+    $nbComments = $commentManager->getCommentCount($_GET['id']);
 
     if ($post) {
         require('view/frontend/postView.php');
@@ -82,15 +83,46 @@ function deleteComment($id, $postId) {
     }
 }
 
+function deleteCommentAdmin($id) {
+    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $deletedComment = $commentManager->deleteComment($id);
+    $posts = $postManager->getPosts();
+    $comments = $commentManager->getFlagComments();
+
+    if ($deletedComment === false) {
+        throw new Exception('Impossible de supprimer ce commentaire !');
+    } else {
+        require('view/frontend/admin.php');
+    }
+}
+
+function resetReportCount($id) {
+    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+    $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $resetedComment = $commentManager->resetReportCount($id);
+    $posts = $postManager->getPosts();
+    $comments = $commentManager->getFlagComments();
+
+    if ($resetedComment === false) {
+        throw new Exception('Impossible de reset ce commentaire !');
+    } else {
+        require('view/frontend/admin.php');
+    }
+}
+
 function newPost() {
-    require('view/frontend/newPostView.html');
+    require('view/frontend/newPostView.php');
 }
 
 function addPost($title, $content) {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
     $postContent = $postManager->postUpload($title, $content);
+    $posts = $postManager->getPosts();
+    $comments = $commentManager->getFlagComments();
 
-    header('Location: index.php');
+    require('view/frontend/admin.php');
 }
 
 function printPost($postId) {
@@ -98,14 +130,17 @@ function printPost($postId) {
     $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
     $post = $postManager->getPost($postId);
     $comments = $commentManager->getComments($postId);
+    $nbComments = $commentManager->getCommentCount($postId);
 
     require('view/frontend/editPostView.php');
 }
 
 function editPost($postId, $title, $content) {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
     $modifiedPost = $postManager->updatePost($postId, $title, $content);
     $posts = $postManager->getPosts();
+    $comments = $commentManager->getFlagComments();
 
     if ($modifiedPost === false) {
         // throw new Exception('Impossible de modidier ce post');
@@ -117,12 +152,15 @@ function editPost($postId, $title, $content) {
 
 function deletePost($postId) {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
+    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
     $deletedPost = $postManager->deletePost($postId);
+    $posts = $postManager->getPosts();
+    $comments = $commentManager->getFlagComments();
 
     if ($deletedPost === false) {
         throw new Exception('Impossible de supprimer ce post');
     } else {
-        header('Location: index.php');
+        require('view/frontend/admin.php');
     }
 }
 

@@ -2,14 +2,12 @@
 
 <?php ob_start(); ?>
 
-<p><a href="index.php">Retour à la liste des chapitres</a></p>
+<p><a href="index.php" class="back_option">⬑   Retour à l'acceuil</a></p>
 
 <h1>Espace administrateur</h1>
 
 <div class="admin_options">
-    <p class="admin_newchapter">
-        <a href="index.php?action=newPost" class="option_newchapter">(+) Ajouter un nouveau chapitre</a>
-    </p>
+    <button onclick="location.href='index.php?action=newPost'" class="admin_newchapter">(+) Ajouter un nouveau chapitre</button>
     <p class="admin_edit">Gérer les chapitres ▼</p>
     <?php
 while ($data = $posts->fetch())
@@ -21,24 +19,27 @@ while ($data = $posts->fetch())
             
         <p>
             <a href="index.php?action=printPost&amp;postid=<?= $data['id'] ?>" class="admin_edit_chapter">(Modifier/Gérer)</a>
-            <a href="index.php?action=deletePost&amp;postid=<?= $data['id'] ?>" class="admin_delete" onclick="return(confirm('Voulez-vous vraiment supprimer ce chapitre ?'));">🗑</a>
+            <a href="index.php?action=deletePost&amp;postid=<?= $data['id'] ?>" class="admin_delete_chapter" onclick="return(confirm('Voulez-vous vraiment supprimer ce chapitre ?'));">Supprimer</a>
         </p>
     </div>
 <?php
 }
-$posts->closeCursor();
 ?>
     <div class="flag_Comments_list">
-        <p class="admin_coms_mod">Gérer les commentaires</p>
+        <p class="admin_coms_mod">🔍 Commentaires signalés</p>
 
 <?php
 while ($comment = $comments->fetch())
 {
 ?>
-<p><strong><?= htmlspecialchars($comment['author']) ?></strong> <span class="coms_date">le <?= $comment['comment_date'] ?></span></p>
+<p>
+    <strong><?= htmlspecialchars($comment['author']) ?></strong>
+    <span class="coms_date">le <?= $comment['comment_date'] ?></span>
+     - 🏁 <span class="coms_flag_count">Signalé <?= $comment['report'] ?> fois <a href="index.php?action=resetReportCount&amp;id=<?= $comment['id'] ?>" class="reset_report">(Reset le compteur)</a></span>
+</p>
 <p>
     <?= nl2br(htmlspecialchars($comment['comment'])) ?>
-    <a href="index.php?action=deleteComment&amp;postid=<?= $data['id'] ?>" class="admin_delete" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">x</a>
+    <a href="index.php?action=deleteCommentAdmin&amp;id=<?= $comment['id'] ?>" class="admin_delete" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer ce commentaire</a>
 </p>
 <?php
 }

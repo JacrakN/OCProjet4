@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 <h1>"Billet simple pour l'Alaska"</h1>
-<p><a href="index.php">Retour à la liste des chapitres</a></p>
+<a class="back_option" href="index.php">⬑   Retour à l'acceuil</a>
 
 <div class="news">
     <h3>
@@ -15,14 +15,21 @@
     </p>
 </div>
 
-<h2>Commentaires</h2>
+<h2><?= $nbComments ?>
+<?php
+if ($nbComments > 1) {
+    echo ' Commentaires</h2>';
+} else {
+    echo ' Commentaire</h2>';
+}
+?>
 
 <?php
 if (isset($_SESSION['pseudo'])) {
 ?>
 <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
     <div>
-        <label for="comment">Commentaire</label><br />
+        <label for="comment">Ajouter un commentaire</label><br />
         <textarea id="comment" name="comment"></textarea>
     </div>
     <div>
@@ -40,36 +47,33 @@ while ($comment = $comments->fetch()) {
 
     <p>
         <?= nl2br(htmlspecialchars($comment['comment'])) ?>
-        <?php
-        if ($_SESSION['role'] == 'admin') {
-        ?>
-        <a href="index.php?action=deleteComment&amp;postid=<?= $data['id'] ?>" class="admin_delete" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">x</a>
-        <?php
-        }
-        ?>
     </p>
 
     <?php
-    if ($_SESSION['role'] == 'user' && $_SESSION['pseudo'] != $comment['author']) {
+    if (isset($_SESSION['role'])) {
+        if ($_SESSION['role'] == 'user' && $_SESSION['pseudo'] != $comment['author']) {
     ?>
     <p>
         <a href="index.php?action=reportComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="coms_options">⚐ Signaler</a>
     </p>
     <?php
+        }
     }
     ?>
 
     <?php
-    if ($_SESSION['pseudo'] == $comment['author']) {
+    if (isset($_SESSION['pseudo'])) {
+        if ($_SESSION['pseudo'] == $comment['author']) {
     ?>
     <p>
-        <a href="index.php?action=deleteComment&amp;postid=<?= $data['id'] ?>" class="coms_options" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer</a>
-        |<a href="index.php?action=printComment&amp;id=<?= $comment['id'] ?>" class="coms_options"> ✎ Modifier</a> 
+        <a href="index.php?action=printComment&amp;id=<?= $comment['id'] ?>" class="coms_options"> ✎ Modifier</a> 
+        | <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="coms_options" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer</a>
     </p>
     <?php
+        }
     }
     ?>
-    
+
     <br>
 <?php
 }

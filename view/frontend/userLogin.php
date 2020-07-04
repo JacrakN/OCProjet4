@@ -2,6 +2,8 @@
 
 <?php ob_start(); ?>
 
+<p><a href="index.php">Retour à l'acceuil</a></p>
+
 <h2>Connexion</h2>
 
 <form action="index.php?action=loginUser" method="post">
