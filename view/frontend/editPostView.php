@@ -2,9 +2,12 @@
 
 <?php ob_start(); ?>
 
+<h3>Modifier le chapitre</h3>
+
 <a class="back_option" href="index.php?action=adminArea">⬑   Retourner dans votre espace</a>
 
-<h1>Modifier le chapitre</h1>
+<div class="post_print">
+
   <form action="index.php?action=editPost&amp;postid=<?= $post['id'] ?>" method="post">
     <div>
       <label for="title">Titre</label><br />
@@ -21,12 +24,12 @@
     </div>
   </form>
   
-  <h2><?= $nbComments ?>
+  <h3><?= $nbComments ?>
   <?php
   if ($nbComments > 1) {
-      echo ' Commentaires</h2>';
+      echo ' Commentaires</h3>';
   } else {
-      echo ' Commentaire</h2>';
+      echo ' Commentaire</h3>';
   }
   ?>
 
@@ -52,7 +55,7 @@ while ($comment = $comments->fetch())
   <?php
   if ($_SESSION['pseudo'] != $comment['author']) {
   ?>
-    <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="admin_delete" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer ce commentaire</a>
+    <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>&amp;pseudo=<?= $comment['author'] ?>" class="admin_delete" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer ce commentaire</a>
   <?php
   }
   ?>
@@ -61,8 +64,8 @@ while ($comment = $comments->fetch())
   if ($_SESSION['pseudo'] == $comment['author']) {
   ?>
   <p>
-    <a href="index.php?action=printComment&amp;id=<?= $comment['id'] ?>" class="coms_options"> ✎ Modifier</a> 
-    | <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="coms_options" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer</a>
+    <a href="index.php?action=printComment&amp;id=<?= $comment['id'] ?>&amp;pseudo=<?= $comment['author'] ?>" class="coms_options"> ✎ Modifier</a> 
+    | <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>&amp;pseudo=<?= $comment['author'] ?>" class="coms_options" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer</a>
   </p>
   <?php
   }
@@ -71,6 +74,8 @@ while ($comment = $comments->fetch())
   <?php
   }
   ?>
+
+</div>
 
 <?php $content = ob_get_clean(); ?>
 

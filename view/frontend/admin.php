@@ -1,10 +1,20 @@
 <?php $title = 'Espace admin'; ?>
-
 <?php ob_start(); ?>
 
-<p><a href="index.php" class="back_option">⬑   Retour à l'acceuil</a></p>
+<head>
+    <style>
+        .main_part {
+            background-color: white;
+            color: black; 
+        }
+        .back_option {color: rgb(53, 60, 65);}
+        .back_option:hover {color: rgb(109, 109, 109);}
+    </style>
+</head>
 
-<h1>Espace administrateur</h1>
+<h1>ESPACE ADMINISTRATEUR</h1>
+
+<p><a href="index.php" class="back_option">⬑   Retour à l'acceuil</a></p>
 
 <div class="admin_options">
     <button onclick="location.href='index.php?action=newPost'" class="admin_newchapter">(+) Ajouter un nouveau chapitre</button>
@@ -17,10 +27,14 @@ while ($data = $posts->fetch())
         <p class="admin_title_post"><?= htmlspecialchars($data['title']) ?></p> | 
         <p class="admin_creation_date_post">posté le <?= $data['creation_date_fr'] ?></p>
             
-        <p>
+        <div class="button_edit_post" id="button_edit_post">
             <a href="index.php?action=printPost&amp;postid=<?= $data['id'] ?>" class="admin_edit_chapter">(Modifier/Gérer)</a>
+        </div>
+            
+        <div class="button_delete_post" id="button_delete_post">
+            <div id="circle"></div>
             <a href="index.php?action=deletePost&amp;postid=<?= $data['id'] ?>" class="admin_delete_chapter" onclick="return(confirm('Voulez-vous vraiment supprimer ce chapitre ?'));">Supprimer</a>
-        </p>
+        </div>
     </div>
 <?php
 }
@@ -32,15 +46,17 @@ while ($data = $posts->fetch())
 while ($comment = $comments->fetch())
 {
 ?>
-<p>
+<div>
     <strong><?= htmlspecialchars($comment['author']) ?></strong>
-    <span class="coms_date">le <?= $comment['comment_date'] ?></span>
-     - 🏁 <span class="coms_flag_count">Signalé <?= $comment['report'] ?> fois <a href="index.php?action=resetReportCount&amp;id=<?= $comment['id'] ?>" class="reset_report">(Reset le compteur)</a></span>
-</p>
-<p>
+    <span class="coms_date">le <?= $comment['comment_date_fr'] ?></span>
+     - 🏁 <span class="coms_flag_count">Signalé <?= $comment['report'] ?> fois <a href="index.php?action=resetReportCount&amp;id=<?= $comment['id'] ?>" class="reset_report">(Reset)</a></span>
+</div>
+<div>
     <?= nl2br(htmlspecialchars($comment['comment'])) ?>
-    <a href="index.php?action=deleteCommentAdmin&amp;id=<?= $comment['id'] ?>" class="admin_delete" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer ce commentaire</a>
-</p>
+    <div class="button_delete_com" id="button_delete_com">
+        <a href="index.php?action=deleteCommentAdmin&amp;id=<?= $comment['id'] ?>" class="admin_delete" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer ce commentaire</a>
+    </div>
+</div>
 <?php
 }
 ?>
@@ -48,5 +64,4 @@ while ($comment = $comments->fetch())
 </div>
 
 <?php $content = ob_get_clean(); ?>
-
 <?php require('template.php'); ?>

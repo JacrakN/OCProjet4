@@ -46,7 +46,7 @@ class CommentManager extends Manager {
     }
     public function getFlagComments() {
         $db = $this->dbConnect();
-        $comments = $db->query('SELECT id, author, comment, comment_date, report FROM comments WHERE report > 0 ORDER BY report DESC');
+        $comments = $db->query('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, report FROM comments WHERE report > 0 ORDER BY report DESC');
         
         return $comments;
     }

@@ -1,58 +1,240 @@
-h1 {
-    font-size: 1.5em;
-    font-weight: bold;
-    font-style: italic;
-    text-align: center;
+* {
+    margin: 0;
+    box-sizing: border-box;
 }
-h2 {
-    font-size: 1.25em;
+body {
+    font-family: Open Sans;
+    font-size: 0.9em;
+}
+a {
+    text-decoration: none;
+}
+.book_title {
+    text-align: center;
+    font-size: 2.9em;
+    font-weight: lighter;
+}
+.written_by {
     font-weight: lighter;
     color: rgb(138, 124, 124);
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-.author_name {
-    font-size: 1.25em;
-}
-h3 {
-    color: black;
-    font-size:1.1em;
-    margin-bottom:0px;
     text-align: center;
-}
-.news p {
-    margin-top:0px;
-}
-.news {
-    width:66%;
-    margin:auto;
+    font-size: 1.5em;
+    user-select: none;
 }
 .top_options {
     padding-left: 50px;
     padding-right: 50px;
+    background-color: rgb(53, 60, 65);
+    color: #BFC0C0;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    letter-spacing: .5px;
+}
+.main_part {
+    background-color: rgba(19, 19, 26, 0.747);
+    color: #BFC0C0;
+    padding: 50px; 
+}
+footer {
+    height: 110px;
+    background-color: rgb(53, 60, 65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.author_name {
+    font-size: 1.25em;
+}
+.title_post {
+    font-size: 1.05em;
+}
+.creation_date_post {
+    font-style: italic;
+    font-size: 0.6em;
+    color: rgb(138, 124, 124);
+}
+h1 {
+    text-align: center;
     padding-top: 25px;
+    letter-spacing: 10px;
+    user-select: none;
+}
+h2 {
+    color: white;
+    text-align: center;
+}
+h3 {
+    text-align: center;
+    padding-top: 50px;
+}
+.chapters {
+    max-width: 500px;
+    min-width: 400px;
+    margin: auto;
+    font-size: 1.2em;
+    line-height: 1.66;
+    letter-spacing: .5px;
+}
+.chapter {
+    width: 66%;
+    margin: auto;
+    font-size: 1.2em;
+    line-height: 1.66;
+    letter-spacing: .5px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.chapter p {
+    padding-top: 15px;
+}
+.full_chapter {
+    color: rgb(41, 34, 34);
+}
+.full_chapter:hover {
+    text-decoration: none;
+    color: rgb(41, 34, 34);
+}
+.comments_part {
+    text-align: center;
+    color: white;
+}
+.comment_print {
+    text-align: center;
+}
+.register_part, .login_part {
+    text-align: center;
+    padding-bottom: 50px;
+}
+.post_print {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+.written_comment {
+    font-size: 1.15em;
+    color: white;
+}
+.button_id {
+    margin-left: auto;
+}
+.button_login, .button_register {
+    display: inline-flex;
+    height: 30px;
+    width: 150px;
+    border: 2px solid #BFC0C0;
+    margin: 20px 20px 20px 20px;
+    color: #BFC0C0;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.75em;
+    letter-spacing: 2px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.button_admin_area {
+    display: inline-flex;
+    height: 40px;
+    width: 225px;
+    border: 2px solid #BFC0C0;
+    margin: 20px 20px 20px 20px;
+    color: #BFC0C0;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.95em;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.button_logout {
+    display: inline-flex;
+    height: 40px;
+    width: 185px;
+    margin-left: auto;
+    color: #BFC0C0;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.95em;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+#button-menu {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+}
+#button-menu a {
+    position: relative;
+    transition: all .45s ease-Out;
+}
+#underline-1 {
+    width: 100%;
+    height: 2.5px;
+    margin-top: 15px;
+    align-self: flex-end;
+    left: -200px;
+    background: #BFC0C0;
+    position: absolute;
+    transition: all .3s ease-Out;
+    bottom: 0;
+}
+#underline-2 {
+    width: 100%;
+    height: 2.5px;
+    margin-top: 15px;
+    align-self: flex-end;
+    left: -225px;
+    background: #BFC0C0;
+    position: absolute;
+    transition: all .3s ease-Out;
+    bottom: 0;
+}
+#button-menu:hover #underline-1 {
+    left: 0;
+}
+#button-menu:hover #underline-2 {
+    left: 0;
+}
+.option_admin_area, .option_logout {
+    color: #BFC0C0;
+    font-size: 0.95em;
+}
+.option_register, .option_login {
+    color: #BFC0C0;;
+}
+.option_admin_area:hover, .option_login:hover, .option_register:hover, .option_logout:hover {
+    text-decoration: none;
+    color: #BFC0C0;
 }
 .back_option {
     color: rgb(150, 82, 82);
-    font-size: 1.1em;
-    padding-left: 2.5%;
+    font-size: 1.05em;
+    margin-left: 7.5%;
+    letter-spacing: .5px;
 }
-.main_part {
-    padding-left: 100px;
-    padding-right: 100px;
+.back_option:hover {
+    text-decoration: none;
+    color: rgb(122, 65, 65);
 }
 .coms_options {
     text-decoration: none;
-    color: rgb(88, 84, 81);
-    font-size: 0.95em;
+    color: #BFC0C0;
+    font-size: 1.05em;
 }
 .coms_options:hover {
-    background-color: rgb(221, 216, 212);
+    text-decoration: none;
+    color: rgb(218, 99, 105);
 }
-.coms_date, .admin_creation_date_post {
+.coms_date {
     font-size: 0.85em;
-    color: rgb(88, 84, 81);
+    color: #BFC0C0;
     font-weight: lighter;
+    letter-spacing: 1.5px;
 }
 .admin_login, .admin_logout {
     text-align: right;
@@ -64,51 +246,140 @@ h3 {
 .admin_options {
     font-size: 1.1em;
     text-align: center;
-    margin-top: 150px;
+    margin-top: 100px;
 }
 .reset_report {
+    color: rgb(150, 150, 150);
+}
+.reset_report:hover {
+    text-decoration: none;
     color: rgb(128, 128, 128);
 }
-.option_login, .option_newchapter, .option_logout, .admin_edit_chapter, .option_admin_area {
+.option_newchapter, .admin_edit_chapter {
     color: rgb(88, 84, 81);
 }
 .admin_newchapter, .admin_edit, .admin_coms_mod{
     padding: 15px;
-    width: 495px;
+    width: 500px;
     margin: auto;
 }
 .coms_flag_count {
-    color: rgb(218, 145, 86);
-    font-size: 0.75em;
+    color: rgb(214, 121, 44);
+    font-size: .85em;
+    letter-spacing: .5px;
 }
 .admin_newchapter {
     border: dashed rgb(88, 84, 81);
+    font-size: 1.05em;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.admin_newchapter:hover {
+    background-color: rgba(153, 180, 155, 0.932);
+    border: solid rgb(88, 84, 81);
+    transition: .2s;
 }
 .admin_edit {
     margin-top: 45px;
     margin-bottom: 15px;
 }
-.admin_newchapter:hover, .chapter_list_admin:hover, .admin_coms_mod:hover {
-    background-color: rgb(221, 216, 212);
+.chapter_list_admin:hover {
+    background-color: rgb(219, 208, 198);
     transition: 0.2s;
 }
-.admin_delete_chapter {
-    padding-left: 25px;
+.button_edit_post {
+    display: inline-flex;
+    height: 20px;
+    width: 130px;
+    margin: 20px 20px 20px 20px;
+    text-transform: uppercase;
+    font-size: 0.65em;
+    letter-spacing: 1.5px;
+    align-items: center;
+}
+.button_delete_post {
+    display: inline-flex;
+    height: 30px;
+    width: 100px;
+    border: 2px solid rgba(255, 0, 0, 0.305);
+    border-radius: 5%;
+    margin: 20px 20px 20px 20px;
+    color: #BFC0C0;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.75em;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.button_delete_post:hover {
+    width: 110px;
+    height: 38.5px;
+    transition: 0.2s;
+    font-size: .825em;
+}
+.button_delete_com {
+    display: inline-flex;
+    width: 170px;
+    border-bottom: 2px solid rgba(255, 0, 0, 0.205);
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+}
+#button_delete_com:hover a {
+    text-decoration: none;
+}
+#button_delete_post {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+#button_delete_post a {
+    position: relative;
+    transition: all .45s ease-Out;
+}
+#circle {
+    width: 0%;
+    height: 0%;
+    opacity: 0;
+    line-height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 0, 0, 0.705);
+    position: absolute;
+    transition: all .2s ease-Out;
+    top: 20px;
+    left: 60px;
+}
+#button_delete_post:hover #circle {
+    width: 200%;
+    height: 500%;
+    opacity: 0.5;
+    top: -70px;
+    left: -70px;
+}
+#button_delete_post:hover a {
+    color: white;
+    text-decoration: none;
 }
 .admin_delete {
     color: rgb(235, 79, 79);
-    text-decoration: none;
     font-size: 0.85em;
-    padding-left: 15px;
 }
-.last_chapter {
-    text-align: center;
-    font-size: 0.95em;
+.admin_delete:hover {
+    text-decoration: none;
 }
 .admin_edit_chapter {
     font-size: 1.25em;
     font-weight: bold;
     padding-left: 15px;
+}
+.admin_delete_chapter {
+    color: rgb(235, 79, 79);
 }
 .admin_title_post {
     font-size: 1.1em;
@@ -116,14 +387,11 @@ h3 {
     font-weight: bold;
     text-align: center;
 }
-.title_post {
-    font-size: 1.5em;
-}
 .chapter_list_admin {
     display: flex;
     font-size: 0.85em;
     align-items: center;
-    width: 550px;
+    width: 650px;
     margin: auto;
     border-left: solid 2px rgb(88, 84, 81);
     border-right: solid 2px rgb(88, 84, 81);
@@ -132,17 +400,12 @@ h3 {
 .admin_creation_date_post {
     width: 135px;
     padding: 15px;
-    font-style: italic;
-}
-.creation_date_post {
-    font-style: italic;
-    font-size: 0.85em;
-    color: rgb(88, 84, 81);
-    font-weight: lighter;
+    color: rgb(138, 124, 124);
+    font-size: .95em;
 }
 .admin_coms_mod {
-    width: 495px;
     margin-top: 45px;
+    margin-bottom: 25px;
     border-top: solid 2px rgb(88, 84, 81);
     border-left: solid 2px rgb(88, 84, 81);
     border-right: solid 2px rgb(88, 84, 81);
@@ -151,4 +414,91 @@ h3 {
     text-decoration: none;
     font-size: 0.9em;
     color: rgb(88, 84, 81);
+}
+.error_msg {
+    font-size: 1.05em;
+    text-align: center;
+}
+figure {
+	font-size: 6px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -5%);
+	width: 64em;
+}
+figcaption {
+	color: #fff;
+	display: flex;
+	align-content: space-between;
+	flex-wrap: wrap;
+	height: 17em;
+}
+figcaption span:before, .sad-mac:before {
+	content: "";
+	display: block;
+	width: 1em;
+	height: 1em;
+	transform: translate(-1em,-1em);
+} 
+figcaption span {
+	display: inline-block;
+	margin: 0 2em;
+	width: 4em;
+	height: 6em;
+}
+.sr-text {
+	overflow: hidden;
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+.sad-mac {
+	background: #fff;
+	margin: 0 auto 7em auto;
+	width: 23em;
+	height: 30em;
+}
+.sad-mac:before {
+	box-shadow: 1em 1em, 23em 1em, 4em 3em, 5em 3em, 6em 3em, 7em 3em, 8em 3em, 9em 3em, 10em 3em, 11em 3em, 12em 3em, 13em 3em, 14em 3em, 15em 3em, 16em 3em, 17em 3em, 18em 3em, 19em 3em, 20em 3em, 3em 4em, 21em 4em, 3em 5em, 21em 5em, 3em 6em, 7em 6em, 9em 6em, 15em 6em, 17em 6em, 21em 6em, 3em 7em, 8em 7em, 16em 7em, 21em 7em, 3em 8em, 7em 8em, 9em 8em, 15em 8em, 17em 8em, 21em 8em, 3em 9em, 21em 9em, 3em 10em, 10em 10em, 13em 10em, 21em 10em, 3em 11em, 11em 11em, 12em 11em, 21em 11em, 3em 12em, 21em 12em, 3em 13em, 10em 13em, 11em 13em, 12em 13em, 13em 13em, 14em 13em, 21em 13em, 3em 14em, 9em 14em, 15em 14em, 16em 14em, 21em 14em, 3em 15em, 17em 15em, 21em 15em, 3em 16em, 21em 16em, 4em 17em, 5em 17em, 6em 17em, 7em 17em, 8em 17em, 9em 17em, 10em 17em, 11em 17em, 12em 17em, 13em 17em, 14em 17em, 15em 17em, 16em 17em, 17em 17em, 18em 17em, 19em 17em, 20em 17em, 3em 22em, 4em 22em, 5em 22em, 14em 22em, 15em 22em, 16em 22em, 17em 22em, 18em 22em, 19em 22em, 20em 22em, 1em 27em, 2em 27em, 3em 27em, 4em 27em, 5em 27em, 6em 27em, 7em 27em, 8em 27em, 9em 27em, 10em 27em, 11em 27em, 12em 27em, 13em 27em, 14em 27em, 15em 27em, 16em 27em, 17em 27em, 18em 27em, 19em 27em, 20em 27em, 21em 27em, 22em 27em, 23em 27em, 1em 28em, 23em 28em, 1em 29em, 23em 29em, 1em 30em, 23em 30em;
+}
+._0:before {
+	box-shadow: 2em 1em, 3em 1em, 1em 2em, 1em 3em, 1em 4em, 1em 5em, 4em 2em, 4em 3em, 4em 4em, 4em 5em, 2em 4em, 3em 3em, 2em 6em, 3em 6em;
+}
+._4:before {
+	box-shadow: 1em 1em, 1em 2em, 1em 3em, 1em 4em, 4em 1em, 4em 2em, 4em 3em, 4em 4em, 2em 4em, 3em 4em, 4em 5em, 4em 6em;
+}
+.d:before {
+	box-shadow: 1em 1em, 2em 1em, 3em 1em, 1em 2em, 4em 2em, 1em 3em, 4em 3em, 1em 4em, 4em 4em, 1em 5em, 4em 5em, 1em 6em, 2em 6em, 3em 6em;
+}
+.e:before {
+	box-shadow: 1em 1em, 2em 1em, 3em 1em, 4em 1em, 1em 2em, 1em 3em, 2em 3em, 3em 3em, 1em 4em, 1em 5em, 1em 6em, 2em 6em, 3em 6em, 4em 6em;
+}
+.f:before {
+	box-shadow: 1em 1em, 2em 1em, 3em 1em, 4em 1em, 1em 2em, 1em 3em, 2em 3em, 3em 3em, 1em 4em, 1em 5em, 1em 6em;
+}
+.n:before {
+	box-shadow: 1em 1em, 1em 2em, 1em 3em, 1em 4em, 1em 5em, 1em 6em, 4em 1em, 4em 2em, 4em 3em, 4em 4em, 4em 5em, 4em 6em, 2em 3em, 3em 4em;
+}
+.o:before {
+	box-shadow: 2em 1em, 3em 1em, 1em 2em, 1em 3em, 1em 4em, 1em 5em, 4em 2em, 4em 3em, 4em 4em, 4em 5em, 2em 6em, 3em 6em;
+}
+.r:before {
+	box-shadow: 1em 1em, 2em 1em, 3em 1em, 4em 2em, 1em 2em, 1em 3em, 1em 4em, 2em 3em, 3em 3em, 1em 5em, 1em 6em, 4em 4em, 4em 5em, 4em 6em;
+}
+.t:before {
+	box-shadow: 1em 1em, 2em 1em, 3em 1em, 2em 2em, 2em 3em, 2em 4em, 2em 5em, 2em 6em;
+}
+.u:before {
+	box-shadow: 1em 1em, 1em 2em, 1em 3em, 1em 4em, 1em 5em, 4em 1em, 4em 2em, 4em 3em, 4em 4em, 4em 5em, 2em 6em, 3em 6em;
+}
+@media screen and (min-width: 720px) {
+	figure {
+	    font-size: 7px;
+	}
+}
+@media screen and (min-width: 1440px) {
+	figure {
+	    font-size: 8px;
+	}
 }

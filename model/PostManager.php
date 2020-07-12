@@ -7,11 +7,10 @@ require_once("model/Manager.php");
 class PostManager extends Manager {
     public function getPosts() {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
-
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date ASC LIMIT 0, 5');
+        
         return $req;
     }
-
     public function getPost($postId) {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
@@ -20,7 +19,6 @@ class PostManager extends Manager {
 
         return $post;
     }
-
     public function postUpload($title, $content) {
         $db = $this->dbConnect();
         $posts = $db->prepare('INSERT INTO posts(title, content, creation_date) VALUES(?, ?, NOW())');
@@ -28,7 +26,6 @@ class PostManager extends Manager {
 
         return $postContent;
     }
-
     public function updatePost($postId, $title, $content) {
         $db = $this->dbConnect();
         $posts = $db->prepare('UPDATE posts SET title = ?, content = ? WHERE id = ?');
@@ -36,7 +33,6 @@ class PostManager extends Manager {
 
         return $modifiedPost;
     }
-
     public function deletePost($postId) {
         $db = $this->dbConnect();
         $posts = $db->prepare('DELETE FROM posts WHERE id = ?');
