@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 <h1 class="book_title">"Billet simple pour l'Alaska" </h1>
-<h2 class="written_by">────── écrit par <span class="author_name">Jean Forteroche</span> ──────</h2>
+<h2 class="written_by">─── écrit par <span class="author_name">Jean Forteroche</span> ───</h2>
 
 <?php
 while ($data = $posts->fetch())

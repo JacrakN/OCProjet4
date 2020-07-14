@@ -1,17 +1,17 @@
 * {
     margin: 0;
-    box-sizing: border-box;
 }
 body {
     font-family: Open Sans;
     font-size: 0.9em;
+    text-align: center;
 }
 a {
     text-decoration: none;
 }
 .book_title {
     text-align: center;
-    font-size: 2.9em;
+    font-size: 1.9em;
     font-weight: lighter;
 }
 .written_by {
@@ -67,6 +67,7 @@ h2 {
 h3 {
     text-align: center;
     padding-top: 50px;
+    padding-bottom: 25px;
 }
 .chapters {
     max-width: 500px;
@@ -77,7 +78,8 @@ h3 {
     letter-spacing: .5px;
 }
 .chapter {
-    width: 66%;
+    max-width: 1600px;
+    min-width: 200px;
     margin: auto;
     font-size: 1.2em;
     line-height: 1.66;
@@ -214,7 +216,6 @@ h3 {
 .back_option {
     color: rgb(150, 82, 82);
     font-size: 1.05em;
-    margin-left: 7.5%;
     letter-spacing: .5px;
 }
 .back_option:hover {
@@ -262,6 +263,12 @@ h3 {
     padding: 15px;
     width: 500px;
     margin: auto;
+}
+.comment_print {
+    padding-top: 50px;
+}
+.comment_print p {
+    padding-bottom: 15px;
 }
 .coms_flag_count {
     color: rgb(214, 121, 44);
@@ -501,4 +508,107 @@ figcaption span {
 	figure {
 	    font-size: 8px;
 	}
+}
+@media screen and (max-width: 768px) {
+    figure {
+        font-size: 5px;
+        transform: translate(-50%, 15%);
+    }
+    .error_msg {
+        padding-top: 75px;
+    }
+}
+@media screen and (max-width: 1050px) {
+    .button_admin_area {
+        font-size: .75em;
+    }
+    .top_options {
+        display: table-cell;
+        width: 1050px;
+        height: 80px;
+    }
+    .top_options p {
+        font-size: .75em;
+        padding-bottom: 25px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .book_title {
+        font-size: 1.7em;
+        letter-spacing: 9px;
+    }
+    .written_by {
+        font-size: 1.35em;
+    }
+    .chapters {
+        font-size: 1.08em;
+    }
+    .chapter {
+        font-size: 1.08em;
+    }
+    .button_id {
+        margin: auto;
+    }
+    .back_option {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -15px;
+    }
+    h1 {
+        letter-spacing: 5px;
+    }
+    .admin_newchapter, .admin_edit, .admin_coms_mod {
+        width: 400px;
+    }
+    .chapter_list_admin {
+        width: 550px;
+    }
+}
+@media screen and (max-width: 650px) {
+    .chapter_list_admin {
+        width: 500px;
+    }
+}
+@media screen and (max-width: 590px) {
+    .chapter_list_admin {
+        width: 450px;
+    }
+    .button_delete_post, .admin_creation_date_post, .button_edit_post {
+        margin: 5px;
+        padding: 0;
+    }
+}
+@media screen and (max-width: 525px) {
+    .chapters {
+        min-width: 225px;
+    }
+    .book_title {
+        font-size: 1.5em;
+        letter-spacing: 7px;
+    }
+    .written_by, .chapters {
+        font-size: .97em;
+    }
+    .button_logout {
+        font-size: 0.75em;
+    }
+    .chapter_list_admin {
+        width: 225px;
+        display: block;
+        border-left: 0;
+        border-right: 0;
+    }
+    .admin_title_post, .admin_creation_date_post, .admin_edit, .admin_newchapter, .admin_coms_mod {
+        width: auto;
+    }
+    h1 {
+        letter-spacing: 1.5px;
+    }
+    .top_options {
+        padding: 0;
+    }
+    .chapter_list_admin:hover {
+        background-color: white;
+    }
 }

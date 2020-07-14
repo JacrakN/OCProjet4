@@ -1,9 +1,10 @@
 <?php $title = 'Modifier un commentaire' ?>
 
 <?php ob_start(); ?>
-<h1>"Billet simple pour l'Alaska"</h1>
 
 <a href="index.php?action=post&amp;id=<?= $comment['post_id'] ?>" class="back_option">⬑   Retour aux commentaires</a>
+
+<h1 class="book_title">"Billet simple pour l'Alaska" </h1>
 
 <div class="comment_print">
 

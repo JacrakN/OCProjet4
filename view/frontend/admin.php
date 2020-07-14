@@ -3,18 +3,15 @@
 
 <head>
     <style>
-        .main_part {
-            background-color: white;
-            color: black; 
-        }
+        .main_part {background-color: white; color: black;}
         .back_option {color: rgb(53, 60, 65);}
         .back_option:hover {color: rgb(109, 109, 109);}
     </style>
 </head>
 
-<h1>ESPACE ADMINISTRATEUR</h1>
-
 <p><a href="index.php" class="back_option">⬑   Retour à l'acceuil</a></p>
+
+<h1>ESPACE ADMINISTRATEUR</h1>
 
 <div class="admin_options">
     <button onclick="location.href='index.php?action=newPost'" class="admin_newchapter">(+) Ajouter un nouveau chapitre</button>

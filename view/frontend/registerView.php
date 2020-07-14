@@ -2,9 +2,9 @@
 
 <?php ob_start(); ?>
 
-<h3>S'enregistrer</h3>
-
 <p><a href="index.php" class="back_option">⬑   Retour à l'acceuil</a></p>
+
+<h3>S'enregistrer</h3>
 
 <div class="register_part">
     <form action="index.php?action=registerUser" method="post">

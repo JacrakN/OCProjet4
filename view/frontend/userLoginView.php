@@ -2,9 +2,9 @@
 
 <?php ob_start(); ?>
 
-<h3>Connexion</h3>
-
 <p><a href="index.php" class="back_option">⬑   Retour à l'acceuil</a></p>
+
+<h3>Connexion</h3>
 
 <div class="login_part">
     <form action="index.php?action=loginUser" method="post">

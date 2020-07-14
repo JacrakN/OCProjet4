@@ -2,9 +2,9 @@
 
 <?php ob_start(); ?>
 
-<h1>"Billet simple pour l'Alaska"</h1>
-
 <a class="back_option" href="index.php">⬑   Retour à l'acceuil</a>
+
+<h1 class="book_title">"Billet simple pour l'Alaska" </h1>
 
 <div class="chapter">
     <h2>
@@ -18,12 +18,12 @@
 
 <div class="comments_part">
 
-    <h2><?= $nbComments ?>
+    <h3><?= $nbComments ?>
     <?php
     if ($nbComments > 1) {
-        echo ' Commentaires</h2>';
+        echo ' Commentaires</h3>';
     } else {
-        echo ' Commentaire</h2>';
+        echo ' Commentaire</h3>';
     }
     ?>
 
