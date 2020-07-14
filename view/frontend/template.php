@@ -29,7 +29,7 @@
                         <div id="underline-2"></div>
                         <a href="index.php?action=adminArea" class="option_admin_area">Espace Administrateur 🔑</a>
                     </div>
-                    - Bonjour ' . $_SESSION['pseudo'] . '... oh mais bien sûr ! C\'est vous l\'administrateur !
+                    <p>- Bonjour ' . $_SESSION['pseudo'] . '... oh mais bien sûr ! C\'est vous l\'administrateur !</p>
                     <div class="button_logout" id="button-menu">
                         <a href="index.php?action=logout" class="option_logout">➜]   Se déconnecter</a>
                     </div>';
