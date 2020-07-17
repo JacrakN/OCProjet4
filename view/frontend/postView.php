@@ -57,7 +57,7 @@
             if ($_SESSION['role'] == 'user' && $_SESSION['pseudo'] != $comment['author']) {
         ?>
         <p>
-            <a href="index.php?action=reportComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>&amp;pseudo=<?= $comment['author'] ?>" class="coms_options">⚐ Signaler</a>
+            <a href="index.php?action=reportComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="coms_options">⚐ Signaler</a>
         </p>
         <?php
             }
@@ -65,15 +65,12 @@
         ?>
 
         <?php
-        if (isset($_SESSION['pseudo'])) {
-            if ($_SESSION['pseudo'] == $comment['author']) {
+        if ($_SESSION['role'] == 'admin') {
         ?>
         <p>
-            <a href="index.php?action=printComment&amp;id=<?= $comment['id'] ?>&amp;pseudo=<?= $comment['author'] ?>" class="coms_options"> ✎ Modifier</a> 
-            | <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>&amp;pseudo=<?= $comment['author'] ?>" class="coms_options" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer</a>
+            <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="admin_delete" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer ce commentaire</a>
         </p>
         <?php
-            }
         }
         ?>
 

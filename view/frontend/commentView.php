@@ -10,7 +10,7 @@
 
     <p>Modifier un commentaire</p>
 
-    <form action="index.php?action=editComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $comment['post_id'] ?>&amp;pseudo=<?= $comment['author'] ?>" method="post"> 
+    <form action="index.php?action=editComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $comment['post_id'] ?>" method="post"> 
         <div>
             <label for="comment">Commentaire</label><br />
             <textarea id="comment" name="comment"><?= $comment['comment'] ?></textarea>

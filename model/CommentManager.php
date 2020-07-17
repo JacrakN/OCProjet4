@@ -27,13 +27,6 @@ class CommentManager extends Manager {
 
         return $comment;
     }
-    public function updateComment($id, $comment) {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('UPDATE comments SET comment = ?, comment_date = NOW() WHERE id = ?');
-        $newComment = $comments->execute(array($comment, $id));
-
-        return $newComment;
-    }
     public function reportComment($id) {
         $db = $this->dbConnect();
         $comments = $db->prepare('UPDATE comments SET report = report +1 WHERE id = ?');

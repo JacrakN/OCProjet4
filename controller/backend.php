@@ -5,22 +5,23 @@ require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/UserManager.php');
 
-function checkAdmin() {
-    if (!$_SESSION['role'] == 'admin') {
-        echo 'Vous n\'êtes pas autorisés à accéder à cette page !';
-        require('view/frontend/userLogin.php');
-    } else {
-        return true;
-    }
-}
+
 function adminArea() {
     $postManager = new \OpenClassrooms\Blog\Model\PostManager();
     $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
     $posts = $postManager->getPosts();
     $comments = $commentManager->getFlagComments();
 
-    if (checkAdmin()) {
-        require('view/frontend/admin.php');
+    require('view/frontend/admin.php');
+}
+function deleteComment($id, $postId) {
+    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
+    $deletedComment = $commentManager->deleteComment($id);
+
+    if ($deletedComment === false) {
+        throw new Exception('Impossible de supprimer ce commentaire !');
+    } else {
+        header('Location: index.php?action=post&id=' . $postId);
     }
 }
 function deleteCommentAdmin($id) {
@@ -78,8 +79,7 @@ function editPost($postId, $title, $content) {
     $comments = $commentManager->getFlagComments();
 
     if ($modifiedPost === false) {
-        // throw new Exception('Impossible de modidier ce post');
-        echo $postId;
+        throw new Exception('Impossible de modidier ce post');
     } else {
         require('view/frontend/admin.php');
     }

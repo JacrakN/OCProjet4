@@ -13,7 +13,7 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 post();
             } else {
-                throw new Exception('Aucun identifiant de billet envoyé');
+                throw new Exception('Aucun identifiant envoyé');
             }
         }
         elseif ($_GET['action'] == 'addComment') {
@@ -25,41 +25,7 @@ try {
                         throw new Exception('Tous les champs ne sont pas remplis !');
                     }
                 } else {
-                    throw new Exception('Aucun identifiant de billet envoyé');
-                }
-            } else {
-                throw new Exception('Vous n\'êtes pas connecté !');
-            }
-        }
-        elseif ($_GET['action'] == 'printComment') {
-            if (isset($_SESSION['role'])) {
-                if ($_SESSION['pseudo'] == $_GET['pseudo']) {
-                    if (isset($_GET['id']) && $_GET['id'] > 0) {
-                        printComment($_GET['id']);
-                    } else {
-                        throw new Exception('Aucun commentaire trouvé !');
-                    }
-                } else {
-                    throw new Exception('Vous n\'avez pas accès à cette action !');
-                }
-            } else {
-                throw new Exception('Vous n\'êtes pas connecté !');
-            }
-        }
-        elseif ($_GET['action'] == 'editComment') {
-            if (isset($_SESSION['role'])) {
-                if ($_SESSION['pseudo'] == $_GET['pseudo']) {
-                    if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['postid']) && $_GET['postid'] > 0) {
-                        if(!empty($_POST['comment'])) {
-                            editComment($_GET['id'], $_POST['comment'], $_GET['postid']);
-                        } else {
-                            throw new Exception('Tout les champs ne sont pas remplis !');
-                        }
-                    } else {
-                        throw new Exception('Toutes les données ne sont pas envoyés');
-                    }
-                } else {
-                    throw new Exception('Vous ne pouvez pas modifier ce commentaire !');
+                    throw new Exception('Aucun identifiant envoyé');
                 }
             } else {
                 throw new Exception('Vous n\'êtes pas connecté !');
@@ -67,14 +33,10 @@ try {
         }
         elseif ($_GET['action'] == 'reportComment') {
             if (isset($_SESSION['role'])) {
-                if ($_SESSION['pseudo'] != $_GET['pseudo']) {
-                    if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['postid']) && $_GET['postid'] > 0) {
-                        reportComment($_GET['id'], $_GET['postid']);
-                    } else {
-                        throw new Exception('Rien à signaler');
-                    }
+                if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['postid']) && $_GET['postid'] > 0) {
+                    reportComment($_GET['id'], $_GET['postid']);
                 } else {
-                    throw new Exception('Vous ne pouvez pas signalé votre propre commentaire !');
+                    throw new Exception('Rien à signaler');
                 }
             } else {
                 throw new Exception('Vous n\'êtes pas connecté !');
@@ -82,7 +44,7 @@ try {
         }
         elseif ($_GET['action'] == 'deleteComment') {
             if (isset($_SESSION['role'])) {
-                if ($_SESSION['pseudo'] == $_GET['pseudo'] || $_SESSION['role'] == 'admin') {
+                if ($_SESSION['role'] == 'admin') {
                     if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['postid']) && $_GET['postid'] > 0) {
                         deleteComment($_GET['id'], $_GET['postid']); 
                     } else {
@@ -104,7 +66,7 @@ try {
                         throw new Exception('Rien à supprimer');
                     }
                 } else {
-                    throw new Exception('Vous n\'êtes pas administrateur !');
+                    throw new Exception('Vous n\'êtes pas autorisé à supprimer ce commentaire !');
                 }
             } else {
                 throw new Exception('Vous n\'êtes pas connecté !');

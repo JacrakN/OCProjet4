@@ -35,23 +35,6 @@ function addComment($postId, $pseudo, $comment) {
         header('Location: index.php?action=post&id=' . $postId);
     }
 }
-function printComment($id) {
-    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
-    $comment = $commentManager->getComment($id); 
-    
-    require('view/frontend/commentView.php'); 
-}
-function editComment($id, $comment, $postId) {
-    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
-    $newComment = $commentManager->updateComment($id, $comment);
-
-    if ($newComment === false) {
-        throw new Exception('Impossible de modifier ce commentaire !');
-    } else {
-        // echo 'Commentaire : ' . $_POST['comment'];
-        header('Location: index.php?action=post&id=' . $postId);
-    }
-}
 function reportComment($id, $postId) {
     $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
     $reportedComment = $commentManager->reportComment($id);
@@ -60,16 +43,6 @@ function reportComment($id, $postId) {
         throw new Exception('Impossible de signaler ce commentaire !');
     } else {
         // echo 'Commentaire : ' . $_POST['comment'];
-        header('Location: index.php?action=post&id=' . $postId);
-    }
-}
-function deleteComment($id, $postId) {
-    $commentManager = new \OpenClassrooms\Blog\Model\CommentManager();
-    $deletedComment = $commentManager->deleteComment($id);
-
-    if ($deletedComment === false) {
-        throw new Exception('Impossible de supprimer ce commentaire !');
-    } else {
         header('Location: index.php?action=post&id=' . $postId);
     }
 }

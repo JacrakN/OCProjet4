@@ -2,9 +2,9 @@
 
 <?php ob_start(); ?>
 
-<h3>Modifier le chapitre</h3>
-
 <a class="back_option" href="index.php?action=adminArea">⬑   Retourner dans votre espace</a>
+
+<h3>Modifier le chapitre</h3>
 
 <div class="post_print">
 
@@ -51,29 +51,13 @@ while ($comment = $comments->fetch())
   <p><strong><?= htmlspecialchars($comment['author']) ?></strong> <span class="coms_date">le <?= $comment['comment_date_fr'] ?></span></p>
 
   <p>
-  <?= nl2br(htmlspecialchars($comment['comment'])) ?>
-  <?php
-  if ($_SESSION['pseudo'] != $comment['author']) {
-  ?>
-    <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>&amp;pseudo=<?= $comment['author'] ?>" class="admin_delete" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer ce commentaire</a>
-  <?php
-  }
-  ?>
+    <?= nl2br(htmlspecialchars($comment['comment'])) ?>
+    <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>" class="admin_delete" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer ce commentaire</a>
   </p>
-  <?php
-  if ($_SESSION['pseudo'] == $comment['author']) {
-  ?>
-  <p>
-    <a href="index.php?action=printComment&amp;id=<?= $comment['id'] ?>&amp;pseudo=<?= $comment['author'] ?>" class="coms_options"> ✎ Modifier</a> 
-    | <a href="index.php?action=deleteComment&amp;id=<?= $comment['id'] ?>&amp;postid=<?= $post['id'] ?>&amp;pseudo=<?= $comment['author'] ?>" class="coms_options" onclick="return(confirm('Voulez-vous vraiment supprimer ce commentaire ?'));">Supprimer</a>
-  </p>
-  <?php
-  }
-  ?>
-  <br>
-  <?php
-  }
-  ?>
+  </br>
+<?php
+}
+?>
 
 </div>
 
